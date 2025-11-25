@@ -59,7 +59,7 @@ public class TicTacToe {
                     public void actionPerformed(ActionEvent e) {
                         if (gameOver) return;
                         JButton tile = (JButton) e.getSource();
-                        if (tile.getText() == ""){
+                        if (tile.getText().isEmpty()){
                             tile.setText(currentPlayer);
                             turns++;
                             checkWinner();
@@ -79,7 +79,7 @@ public class TicTacToe {
     void checkWinner(){
         //horizontal
         for (int r = 0; r < 3; r++){
-            if (board[r][0].getText() == "") continue;
+            if (board[r][0].getText().isEmpty()) continue;
 
             if (board[r][0].getText() == board[r][1].getText() &&
                 board[r][1].getText() == board[r][2].getText()) {
@@ -92,10 +92,10 @@ public class TicTacToe {
         }
         //vertical
         for (int c = 0; c < 3; c++){
-            if (board[0][c].getText() == "") continue;
+            if (board[0][c].getText().isEmpty()) continue;
 
-            if (board[0][c].getText() == board[1][c].getText() &&
-                    board[1][c].getText() == board[2][c].getText()) {
+            if (board[0][c].getText().equals(board[1][c].getText()) &&
+                    board[1][c].getText().equals(board[2][c].getText())) {
                 for (int i = 0; i < 3; i++){
                     setwinner(board[i][c]);
                 }
@@ -104,9 +104,9 @@ public class TicTacToe {
             }
         }
         //diagonal
-        if (board[0][0].getText() == board[1][1].getText() &&
-            board[2][2].getText() == board[1][1].getText() &&
-            board[0][0].getText() != ""){
+        if (board[0][0].getText().equals(board[1][1].getText() )&&
+            board[2][2].getText().equals(board[1][1].getText() )&&
+            !board[0][0].getText().isEmpty()){
             for (int i = 0; i < 3; i++){
                 setwinner(board[i][i]);
             }
@@ -114,7 +114,7 @@ public class TicTacToe {
             return;
         }
         //other diagonal
-        if (board[0][2].getText() == board[1][1].getText() && board[2][0  ].getText() == board[1][1].getText() && board[0][2].getText() != ""){
+        if (board[0][2].getText().equals(board[1][1].getText()) && board[2][0].getText().equals(board[1][1].getText()) && !board[0][2].getText().isEmpty()){
             setwinner(board[0][2]);
             setwinner(board[1][1]);
             setwinner(board[2][0]);
